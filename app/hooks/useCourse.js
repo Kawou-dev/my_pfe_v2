@@ -17,33 +17,31 @@ const useCourse = () => {
               setCourses(data.courses)
         } catch (error) {
             toast.error(error.message) ; 
-            console.log("Error getting course") ; 
+            console.log("Erreur lors de la récupération des cours") ; 
         }finally{
             setLoading(false) ; 
         }
     }
 
-
     const addCourse = async({title}) => {
         const success = handleInputsError({title})
-        if(!success)    {return }
+        if(!success) { return }
         setLoading(true)
         try {
             const res = await fetch("/api/course" , {
                 method : "POST" , 
                 headers : {"Content-type" : "application/json"} , 
-                // body : JSON.stringify({title , notes}) 
                 body : JSON.stringify({title}) 
              })
              const data = await res.json() ; 
              if(!res.ok){
                 throw new Error(data.message) ; 
              }
-             toast.success("New cours added successfully") ; 
+             toast.success("Nouveau cours ajouté avec succès") ; 
              fetchCourse() ; 
         } catch (error) {
             toast.error(error.message)
-            console.log("Error adding new course" , error.message)
+            console.log("Erreur lors de l'ajout du cours", error.message)
         }finally{
             setLoading(false) ; 
         }
@@ -58,11 +56,11 @@ const useCourse = () => {
                 body : JSON.stringify({courseId}) 
             })
             if(!res.ok) throw new Error(res.error) ; 
-            toast.success("Course deleted successfully") ; 
-               fetchCourse() ; 
+            toast.success("Cours supprimé avec succès") ; 
+            fetchCourse() ; 
         } catch (error) {
              toast.error(error.message) ; 
-             console.log("Error deleting the course and it's pdfs and notes") ; 
+             console.log("Erreur lors de la suppression du cours et de ses PDFs/notes") ; 
         }finally{
             setLoading(false) ; 
         }
@@ -71,13 +69,11 @@ const useCourse = () => {
     return {courses , addCourse , fetchCourse , loading, deleteCourse}
 }
 
-
 export default useCourse
-
 
 function handleInputsError({title}){
     if(!title){
-        toast.error("Title of the course required") ; 
+        toast.error("Le titre du cours est requis") ; 
         return false ; 
     }
     return true ; 

@@ -12,7 +12,7 @@ const useCalendar = () => {
     try {
       const res = await fetch('/api/calendar');
       const data = await res.json();
-      // mettre à jour les events ici
+     setEvents(data.events)
     } catch (error) {
       console.error(error);
     } finally {

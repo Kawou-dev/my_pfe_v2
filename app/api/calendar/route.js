@@ -13,7 +13,7 @@ export async function GET() {
             return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
         }
         const events = await CalendarModel.find({ userId : session.user.id }) ; 
-        // console.log(events) ; 
+        console.log(events) ; 
         return NextResponse.json({events}, {status : 200})
     } catch (error) {
         console.error(error.message) ; 

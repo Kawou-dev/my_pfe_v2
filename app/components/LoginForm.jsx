@@ -21,29 +21,26 @@ const LoginForm = () => {
       });
     
       if (res.ok) {
-        toast.success("Connected successfully !");
-        const session  = await getSession() ; 
-        if(session.user?.isAdmin){
-          router.replace("/admin") ; 
-        }else{
+        toast.success("Connexion réussie !");
+        const session = await getSession();
+        if(session.user?.isAdmin) {
+          router.replace("/admin");
+        } else {
           router.replace("/dashboard");
         }        
-       
       } else {
-        console.log("Erreur request :", res.error);
-          if (res.error === "CredentialsSignin") {
-          throw new Error("Email or password incorrect.");
+        console.log("Erreur de requête :", res.error);
+        if (res.error === "CredentialsSignin") {
+          throw new Error("Email ou mot de passe incorrect.");
         }
       }
     } catch (error) {
-      console.log("Erreur signin:", error.message);
+      console.log("Erreur lors de la connexion :", error.message);
       toast.error(error.message);
     }
     
-
-    console.log(email , password)
-
-  }
+    console.log(email, password);
+}
 
   return (
     <div>

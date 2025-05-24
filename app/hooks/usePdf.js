@@ -56,9 +56,9 @@ const usePdf = () => {
   //     const { secure_url, public_id } = response.data;
   //     setPdfUrl(secure_url);
   //     setPublicId(public_id) ; 
-  //    // console.log('✅ PDF uploaded:', uploadedUrl);
+  //    // console.log(' PDF uploaded:', uploadedUrl);
   //   } catch (error) {
-  //     console.error('❌ Erreur Cloudinary:', error);
+  //     console.error(' Erreur Cloudinary:', error);
   //   }
 
   //   setLoadingPdf(false);
@@ -276,7 +276,7 @@ const usePdf = () => {
               if(!res.ok){
                 throw new Error(data.error) ;  
               }else{
-                   toast.success("pdf added successfully") ; 
+                   toast.success("pdf ajouté avec succès") ; 
                    fetchPdf() ; 
                 }
            } catch (error) {
@@ -301,7 +301,7 @@ const usePdf = () => {
             if (!res.ok) {
               throw new Error(data.message);
             } else {
-              toast.success("Delete successfully");
+              toast.success("pdf supprimé avec succès");
               fetchPdf();
             }
           } catch (error) {
