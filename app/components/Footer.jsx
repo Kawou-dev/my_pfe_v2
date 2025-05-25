@@ -9,7 +9,7 @@ const Footer = () => {
     <div className="sm:flex sm:items-center sm:justify-between">
       <div className="p-5 shadow-xl shadow-gray-800 ">
         <Link href="/" className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-          <img src="/images/TanzimLy1.png" className="h-8 shadow-md" alt="BlaniGo Logo" />
+          <img src="/images/TanzimLy1.png" className="h-8 shadow-md" alt="TanzimLy Logo" loading="lazy" />
           <span className="self-center text-2xl font-bold whitespace-nowrap dark:text-white">TanzimLy</span>
         </Link>
       </div>
@@ -21,7 +21,7 @@ const Footer = () => {
           <Link href="/propos" className="hover:underline me-4 md:me-6">A propos de nous</Link>
         </li>
         <li>
-          <Link href="/contact" className="hover:underline me-4 md:me-6">Contact</Link>
+          <Link href="/auteur" className="hover:underline me-4 md:me-6">Auteurs</Link>
         </li>
         <li>
           <Link href="/politique" className="hover:underline">Confidentialité</Link>

@@ -12,7 +12,7 @@ export async function POST(req) {
           'X-Title': 'KawouBot',
         },
         body: JSON.stringify({
-          model: 'gpt-3.5-turbo',  // Utilise le modèle sans le préfixe 'openrouter/'
+          model: 'gpt-3.5-turbo',  
           messages: [
             { role: 'system', content: 'Tu es KawouBot, un assistant stylé et drôle.' },
             { role: 'user', content: userMessage },

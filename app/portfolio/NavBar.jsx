@@ -20,8 +20,9 @@ const NavBar = () => {
             <div className="flex items-center gap-3 hover:opacity-90 transition-opacity">
               <Image   className="drop-shadow-xl shadow-xl  hover:scale-105 transition-transform"
                   src="/images/TanzimLy1.png"
-                  alt="Logo Kawou"
+                  alt="TanzimLy Logo "
                   width={100}   height={150} 
+                  loading="lazy"
                   //  width="auto" height="auto"
                  />
           

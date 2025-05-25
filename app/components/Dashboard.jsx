@@ -214,22 +214,7 @@ const Dashboard = () => {
 
 
 
-           {/* <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md">
-              <h2 className="text-lg sm:text-xl font-bold mb-4 flex items-center">
-                <FiBook className="mr-2 text-indigo-600" /> Progression des Études
-              </h2>
-              <div className="flex items-center">
-                <div className="w-full sm:w-1/2">
-                  <p className="text-gray-700 mb-2"> Mathématiques </p>
-                  <div className="w-full bg-gray-200 rounded-full h-2.5">
-                    <div className="bg-indigo-600 h-2.5 rounded-full" style={{ width: "60%" }}></div>
-                  </div>
-                  <p className="text-sm text-gray-500 mt-1">5/10 chapitres révisés</p>
-                </div>
-              </div>
-            </div>
-          </div>  */}
-
+       
 
 
 
@@ -247,37 +232,6 @@ const Dashboard = () => {
               <div className="mb-1 sm:mb-4">
 
 
-                {/* <h3 className="font-semibold text-gray-700 mb-2">Villes planifiées</h3>
-                
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    { city: "Paris", priority: "Haute", date: "20 Oct 2023" },
-                    { city: "Tokyo", priority: "Moyenne", date: "15 Déc 2023" },
-                    { city: "New York", priority: "Basse", date: "Mars 2024" },
-                  ].map((trip, index) => (
-                    <div 
-                      key={index} 
-                      className={`p-2 sm:p-3 rounded-lg border ${trip.priority === "Haute" 
-                        ? "bg-red-50 border-red-200" 
-                        : trip.priority === "Moyenne" 
-                        ? "bg-amber-50 border-amber-200" 
-                        : "bg-blue-50 border-blue-200"}`}
-                    >
-                      <div className="font-medium text-sm sm:text-base">{trip.city}</div>
-                      <div className="text-xs sm:text-sm text-gray-500">{trip.date}</div>
-                      <div className={`text-xs mt-1 ${
-                          trip.priority === "Haute" 
-                          ? "text-red-600" 
-                          : trip.priority === "Moyenne" 
-                          ? "text-amber-600" 
-                          : "text-blue-600"}`}
-                      >
-                        {trip.priority} priorité
-                      </div>
-                    </div>
-                  ))}
-                </div> */}
-            
             
               </div>
                <div className="mb-4 sm:mb-6">
@@ -289,7 +243,7 @@ const Dashboard = () => {
                  
                  
                     {loading ? 
-                    (<div>Loading...</div>  ) 
+                    (<div>En telechargement...</div>  ) 
                     : 
                     ( <div>    
                        <div className="flex flex-wrap gap-2">
@@ -336,49 +290,30 @@ const Dashboard = () => {
               {/* Memory photos */}
             
             
-              {/* <div className="mb-4 sm:mb-6">
-                <h3 className="font-semibold text-gray-700 mb-2">Derniers souvenirs</h3>
-                <div className="grid grid-cols-3 gap-2">
-                  {[1, 2, 3].map((item) => (
-                    <div 
-                      key={item} 
-                      className="aspect-square bg-gray-200 rounded-lg overflow-hidden flex items-center justify-center"
-                    >
-                      <FiImage className="text-gray-400 text-xl" />
-                    </div>
-                  ))}
-                  <button className="aspect-square border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50">
-                    <FiPlus className="text-gray-400" />
-                  </button>
-                </div>
-              </div> */}
 
-                    {/* <div className="flex items-center justify-center h-screen bg-white">
-                        <div className="animate-spin rounded-full h-8 w-16 border-4 border-gray-300 border-t-transparent"></div>
-                      </div> */}
 
                 <div className="mb-4 sm:mb-6">
                   <h3 className="font-semibold text-gray-700 mb-2">Derniers souvenirs</h3>
-                  <div className="grid grid-cols-3 gap-2">
-                    {favorisVac?.map((vac, index) => (
-                      <div key={index} className="aspect-square bg-gray-200 rounded-lg overflow-hidden flex items-center justify-center">
-                         {/* <a href={vac?.images}className=" cursor-pointer w-full h-full  " > <img src={vac?.images} className="cursor-pointer w-full h-full" /></a> */}
-                         <a href={vac?.images} className="cursor-pointer w-full h-full">
-                                <img
-                                  src={vac?.images} className="cursor-pointer w-full h-full transition-opacity duration-300 hover:opacity-65"/>
-                            </a>
-
-                      </div>
-                    ))}
 
 
-
-                    {/* <button className="aspect-square border-2 cursor-pointer border-dashed border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50">
-                      <FiPlus className="text-gray-400" />
-                    </button> */}
-
-                    
-                  </div>
+                <div className="grid grid-cols-3 gap-2">
+                  {favorisVac?.map((img, index) => (
+                    <div
+                      key={index}
+                      className="aspect-square bg-gray-200 rounded-lg overflow-hidden flex items-center justify-center"
+                    >
+                      <a href={img} className="cursor-pointer w-full h-full">
+                        <img
+                          loading="lazy"
+                          src={img}
+                          className="cursor-pointer w-full h-full object-cover transition-opacity duration-300 hover:opacity-65"
+                          alt={`Image favori ${index + 1}`}
+                        />
+                      </a>
+                    </div>
+                  ))}
+                </div>
+   
                 </div>
 
 
@@ -388,24 +323,6 @@ const Dashboard = () => {
 
         
 
-
-              {/* Div nous noter */}
-
-
-         {/* <div className="mt-6">
-
-               <div className=" mb-2 italic ml-2  ">
-                    <p className="text-slate-700 ">Nous notez</p>
-               </div>
-
-            <div className="flex gap-0.5" > 
-                 {Stars.map( (star,index) => (
-                  <div onClick={()=> handleRate(index)  } key={index}>
-                       {star}
-                  </div>
-                 ) )}
-            </div>
-          </div>    */}
 
              <div>     
                  <Rating />
@@ -434,22 +351,7 @@ const Dashboard = () => {
        
 
 
-       
-        {/* Calendar */}
-        {/* <div className="bg-white p-3 rounded-xl shadow-md mb-4">
-          <h2 className="text-lg font-bold mb-1 ml-3  flex  items-center">
-            <FiCalendar className="mr-2  text-indigo-600 text-sm" /> Calendrier
-          </h2>
-          <div className="text-center text-sm">
-            <p className="text-gray-600 mb-1 text-[16px] "> {today} </p>
-            <div className="bg-indigo-100 text-indigo-800 p-1 rounded-lg mb-1 text-sm">
-              📌 Examen de Maths
-            </div>
-            <div className="bg-green-100 text-green-800 p-1 rounded-lg text-sm">
-              ✈️ Voyage à Paris
-            </div>
-          </div>
-        </div> */}
+      
          
          <div className="bg-white p-3 rounded-xl shadow-md mb-4">
           <h2 className="text-lg font-bold  ml-3  flex  items-center">

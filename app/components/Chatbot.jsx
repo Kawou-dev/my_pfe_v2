@@ -76,7 +76,7 @@ export default function Chatbot() {
                   >
                     <p className="text-white">{msg.text}</p>
                     <p className="text-xs text-gray-300 mt-1 text-right">
-                      {msg.sender === 'user' ? 'Vous' : 'Bot'} • {new Date().toLocaleTimeString()}
+                      {msg.sender === 'user' ? 'Vous' : 'Chatbot'} • {new Date().toLocaleTimeString()}
                     </p>
                   </div>
                 </div>
@@ -110,7 +110,7 @@ export default function Chatbot() {
           <button
             type="submit"
             disabled={loading || !inputMessage.trim()}
-            className=" disabled:cursor-not-allowed cursor-pointer  border-2  p-3 rounded font-semibold flex items-center justify-center w-24"
+            className=" disabled:cursor-not-allowed cursor-pointer disabled:to-gray-600  border-2  p-3 rounded font-semibold flex items-center justify-center w-24"
           >
             {loading ? (
               <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

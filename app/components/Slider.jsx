@@ -7,6 +7,8 @@ import { IoChevronBackCircleOutline } from "react-icons/io5";
 const Slider = ({ vac }) => {
   const [current, setCurrent] = useState(0);
 
+  console.log(vac) ; 
+
   const next = () => setCurrent((prev) => (prev + 1) % vac.images.length);
   const prev = () => setCurrent((prev) => (prev - 1 + vac.images.length) % vac.images.length);
 
@@ -14,7 +16,7 @@ const Slider = ({ vac }) => {
 
   return (
     <div className="relative w-full h-full">
-      <a href={vac.images} >
+      <a href={vac.images[current]} >
       <img
         src={vac.images[current]}
         alt={`Slide ${current}`}

@@ -29,7 +29,8 @@ const useVacance = () => {
             const res = await fetch("/api/vacance/favori"); 
             const data = await res.json(); 
             if(data.error) throw new Error(data.error)
-            setFavorisVacance(data.favoris)
+            setFavorisVacance(data.images)
+            console.log("frontend--->" , favorisVac)
         } catch (error) {
             console.log("Erreur frontend - récupération des favoris", error.message)
             toast.error(error.message)
@@ -65,13 +66,13 @@ const useVacance = () => {
         }
     }
 
-    const setFavori = async(id) => {
+    const setFavori = async(publicId) => {
         setLoading(true); 
         try {
             const res = await fetch("/api/vacance", {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({id}),
+                body: JSON.stringify({publicId}),
             });
             const data = await res.json(); 
             if(data.error) throw new Error(data.message); 

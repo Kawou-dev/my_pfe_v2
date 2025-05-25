@@ -22,8 +22,7 @@ const Confidentialite = () => {
         <section>
           <h2 className="text-xl font-semibold">2. Données collectées</h2>
           <p>
-            Nous collectons les données suivantes : nom, email, mot de passe (crypté), tâches planifiées (to-do, vacances, études),
-            ainsi que des données techniques comme l’adresse IP et le type de navigateur.
+            Nous collectons les données suivantes : nom, email, mot de passe (crypté), tâches planifiées (to-do, vacances, études).
           </p>
         </section>
 

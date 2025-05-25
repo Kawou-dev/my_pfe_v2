@@ -52,7 +52,8 @@ export async function POST(req) {
         'X-Title': 'KawouBot',
       },
       body: JSON.stringify({
-        model: 'mistralai/mistral-7b-instruct',
+        // model: 'mistralai/mistral-7b-instruct',
+        model: 'gpt-3.5-turbo',  
         messages: [
           { role: 'system', content: 'Réponds de manière concise, claire et précise en fonction du message reçu.' },
           { role: 'user', content: userMessage },

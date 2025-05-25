@@ -63,24 +63,63 @@ export async function POST(request){
     }
 }
 
-export async function PUT(request){
-    try {
-        await connectDB() ; 
-        const session = await getServerSession(authOptions) ;
-        if(!session) return NextResponse.json({message : "Unauthorized: No session valid"}, {status : 401}) 
+// export async function PUT(request){
+//     try {
+//         await connectDB() ; 
+//         const session = await getServerSession(authOptions) ;
+//         if(!session) return NextResponse.json({message : "Unauthorized: No session valid"}, {status : 401}) 
         
-        const {id} = await request.json() ; 
-        const existigVacance = await Vacances.findById(id) ; 
-        const { favori   } = existigVacance ; 
+//         const {id} = await request.json() ; 
+//         const existigVacance = await Vacances.findById(id) ; 
+//         const { favori   } = existigVacance ; 
 
-        const updatedVacance = await Vacances.findByIdAndUpdate(id , {
-            $set : { favori:  !existigVacance.favori   }
-        })
-        return NextResponse.json({updatedVacance} , {status : 200}) ; 
-    } catch (error) {
-        console.error("Error while setting vacance :" , error.message) ; 
-        return NextResponse.json({message : "Internal error server"} , {status : 500});
+//         const updatedVacance = await Vacances.findByIdAndUpdate(id , {
+//             $set : { favori:  !existigVacance.favori   }
+//         })
+//         return NextResponse.json({updatedVacance} , {status : 200}) ; 
+//     } catch (error) {
+//         console.error("Error while setting vacance :" , error.message) ; 
+//         return NextResponse.json({message : "Internal error server"} , {status : 500});
+//     }
+// }
+export async function PUT(request) {
+  try {
+    await connectDB();
+    const session = await getServerSession(authOptions);
+    if (!session) {
+      return NextResponse.json(
+        { message: "Unauthorized: No session valid" },
+        { status: 401 }
+      );
     }
+
+    const { publicId } = await request.json();
+
+    if (!publicId) {
+      console.error("Erreur : PublicId is missing!");
+      return NextResponse.json(
+        { message: "PublicId is missing!" },
+        { status: 400 }
+      );
+    }
+
+    const existingVacance = await Vacances.findOne({ publicId, userId: session.user.id });
+
+    if (!existingVacance) {
+      return NextResponse.json({ message: "Vacance non trouvée avec ce publicId." }, { status: 404 } ); }
+
+    
+    existingVacance.favori = !existingVacance.favori;
+    await existingVacance.save();
+
+    return NextResponse.json({ updated: existingVacance }, { status: 200 });
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour du favori :", error.message);
+    return NextResponse.json(
+      { message: "Internal server error" },
+      { status: 500 }
+    );
+  }
 }
 
 
