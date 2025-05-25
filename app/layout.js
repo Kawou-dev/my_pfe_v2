@@ -16,26 +16,25 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "TanzimLy | Gérez mieux, planifiez malin",
   description: "Optimisez votre organisation grâce à une plateforme moderne de planification et de gestion.",
-    keywords: ["gestion", "planification", "projets", "plateforme", "TanzimLy" , "etudes" , "vacance"],
-
+  keywords: ["gestion", "planification", "projets", "plateforme", "TanzimLy", "etudes", "vacance"],
 };
-
-
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-
-        <AuthProvider> 
+      <head>
+        {/* Ajout du favicon SVG */}
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        {/* Fallback pour compatibilité */}
+        <link rel="icon" href="/favicon.ico" />
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <AuthProvider>
           {children}
-            <div>
-              <Toaster />
-            </div>
+          <div>
+            <Toaster />
+          </div>
         </AuthProvider>
-       
       </body>
     </html>
   );

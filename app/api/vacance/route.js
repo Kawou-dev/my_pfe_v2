@@ -47,12 +47,12 @@ export async function POST(request){
 
         if(nbreVacance >= LIMITE_RATE) {
             console.log("Limite reached (nbre max = " , nbreVacance ,  ")"   ) ; 
-            return NextResponse.json({message: "Limite vac reached"} , {status : 403})  ; 
+            return NextResponse.json({message: "La limite est atteinte, veuillez supprimer d'aures"} , {status : 403})  ; 
         }
 
           const {cityName , experience , images, publicId } = await request.json() ;
           if(!cityName || !experience || !images ||  !publicId ){
-              return NextResponse.json({message : "Fieds are required"}, {status : 400}) ; 
+              return NextResponse.json({message : "Tous les champs sont obligatoires"}, {status : 400}) ; 
           }
           const newVacance = await Vacances.create({cityName , experience , images , publicId ,  userId : session.user.id}) ; 
           return NextResponse.json({newVacance : newVacance} , {status : 201})

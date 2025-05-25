@@ -10,7 +10,7 @@ const Author = () => {
            <div className='flex flex-col gap-5 justify-center'>
               <div className="p-5 border shadow-md rounded text-gray-500">
             <div className="flex items-center">
-                <Image className="w-20 h-20 shadow-md rounded-full mr-3" src="/images/bhoye.jpg" alt="jane" />
+                <Image loading='lazy' className="w-20 h-20 shadow-md rounded-full mr-3" src="/images/bhoye.jpg" alt="jane" />
                 <div className="text-sm">
                     <a href="#"
                         className="font-medium leading-none text-gray-900 hover:text-indigo-600 transition duration-500 ease-in-out">
@@ -27,7 +27,7 @@ const Author = () => {
              </div>
                  <div className="p-5 border shadow-md rounded text-gray-500">
             <div className="flex items-center">
-                <Image className="w-20 h-20 rounded-full shadow-md mr-3" src="/images/admin_photo.png" alt="jane" />
+                <Image loading='lazy' className="w-20 h-20 rounded-full shadow-md mr-3" src="/images/admin_photo.png" alt="jane" />
                 <div className="text-sm">
                     <a href="#"
                         className="font-medium leading-none text-gray-900 hover:text-indigo-600 transition duration-500 ease-in-out">

@@ -28,12 +28,12 @@ export async function POST(req) {
       createdAt: { $gte: startOfDay },
     });
 
-    console.log("Nbre limite ---->", DAILY_LIMITE);
-    console.log("Nbre requette --->", request_day);
+    // console.log("Nbre limite ---->", DAILY_LIMITE);
+    // console.log("Nbre requette --->", request_day);
 
     if (request_day >= DAILY_LIMITE) {
       console.log("Limit reached: Chatbot", request_day);
-      return NextResponse.json({ error: "Chat limit reached: Come back tomorrow" }, { status: 429 });
+      return NextResponse.json({ error: "Vous avez atteint la limite journalière, revenez demain" }, { status: 429 });
     }
 
     
