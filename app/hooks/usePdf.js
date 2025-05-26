@@ -323,7 +323,7 @@ const usePdf = () => {
                     body : JSON.stringify({courseId  , id })
                  })
                  if(!res.ok) throw new Error(res.error) ; 
-                 toast.success("Hello Kawou") ;
+                 toast.success("Marqué terminé avec succès") ;
 
               } catch (error) {
                 toast.error(error.message)  ; 
