@@ -175,7 +175,7 @@ const useVacance = () => {
     const fetchNextVacDashboard = async()=> {
         setLoading(true); 
         try {
-            const res = await fetch('/api/vacance/prochain'); 
+            const res = await fetch('/api/vacance/nextVacDashboard'); 
             const data = await res.json(); 
             if(data.error) throw new Error(data.message); 
             setNextVacDashboard(data.nextVacances); 

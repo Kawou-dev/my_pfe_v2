@@ -29,7 +29,7 @@ const NextVac = () => {
     setInputs({
       cityName: '',
       prevDate: '',
-      priority: 'faible'
+      priority: 'Haute'
     });
   };
 

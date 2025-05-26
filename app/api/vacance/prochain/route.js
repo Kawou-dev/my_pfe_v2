@@ -12,7 +12,7 @@ export async function GET(){
             return NextResponse.json({message: "Unauthorized: No session Valid"} , {status: 401}) ; 
         }
 
-        const nextVacances = await NextVacanceModel.find({userId : session.user.id}).limit(4) ; 
+        const nextVacances = await NextVacanceModel.find({userId : session.user.id}) ; 
         return NextResponse.json({nextVacances}, {status: 200}) ; 
     } catch (error) {
         console.error("Error while getting the next vacances" , error.message)  ; 

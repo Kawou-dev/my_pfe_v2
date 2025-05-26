@@ -11,7 +11,6 @@ export async function GET(){
         if(!session) {
             return NextResponse.json({message: "Unauthorized: No session Valid"} , {status: 401}) ; 
         }
-
         const nextVacances = await NextVacanceModel.find({userId : session.user.id}).limit(4) ; 
         return NextResponse.json({nextVacances}, {status: 200}) ; 
     } catch (error) {
